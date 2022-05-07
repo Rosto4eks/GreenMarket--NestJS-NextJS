@@ -16,8 +16,8 @@ export class ProductsService {
         return this.productsRepository.find();
     }
 
-    public async get(id) {
-        return this.productsRepository.findOne({id: id})
+    public async get(name: string) {
+        return this.productsRepository.findOne({name: name})
     }
 
     async create(dto: ProductDto): Promise<Product> {
@@ -29,7 +29,7 @@ export class ProductsService {
 
     }
 
-    public async delete(id) {
+    public async delete(id: any) {
         return this.productsRepository.delete({id: id})
     }
 
