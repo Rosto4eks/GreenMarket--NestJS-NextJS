@@ -9,7 +9,7 @@ export class UsersController {
 
     @Get(':login')
     async get(@Param('login') params: string) {
-       return this.userService.get(params.slice(1))
+       return this.userService.get(params)
     }
     
     @Post('create')
@@ -19,6 +19,6 @@ export class UsersController {
 
     @Post('delete:userId')
     async delete(@Param('userId') params: string) {
-        return this.userService.delete(params.slice(1))
+        return this.userService.delete(params)
     }
 }
