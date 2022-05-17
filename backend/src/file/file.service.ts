@@ -7,7 +7,7 @@ export class FileService {
 
     createFile(file: any, fileName: string) {
         try {
-            const filePath = path.resolve(__dirname, '..', 'static')
+            const filePath = path.resolve(__dirname, '..', '..', '..', '..', 'frontend', 'public', 'images')
             if (!fs.existsSync(filePath)) {
                 fs.mkdirSync(filePath, {recursive: true})
             }

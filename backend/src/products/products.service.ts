@@ -29,6 +29,7 @@ export class ProductsService {
 
         const product = new Product();
         product.name = dto.name;
+        product.price = dto.price;
         this.fileService.createFile(file, dto.name)
 
         return this.productsRepository.save(product);
@@ -37,6 +38,10 @@ export class ProductsService {
 
     public async delete(id: any) {
         return this.productsRepository.delete({id: id})
+    }
+
+    public async getCount() {
+        return this.productsRepository.count()
     }
 
 }

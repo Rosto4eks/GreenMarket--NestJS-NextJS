@@ -1,13 +1,15 @@
-import React from "react";
-import style from '../styles/products.module.css'
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
 
 const Index = () => {
-    return (
-        <>
-            <div className={style.height}>
-            </div>
-        </>
-    );
+    const router = useRouter();
+
+    useEffect(
+        () => {
+            router.push('/products')
+        }
+    )
 };
 
 export default Index;

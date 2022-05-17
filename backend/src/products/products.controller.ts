@@ -28,5 +28,10 @@ export class ProductsController {
     async delete(@Param('id') params: string) {
         return this.productService.delete(params)
     }
+
+    @Post('count')
+    async getCount() {
+        return this.productService.getCount()
+    }
     
 }
