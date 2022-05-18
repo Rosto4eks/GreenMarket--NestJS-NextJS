@@ -3,102 +3,19 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { createButtons } from "../../components/createButtons.module";
+import { createProduct } from "../../components/createProduct.module";
+import { menu } from "../../components/menu.module";
 import style from "../../styles/products.module.css"
 
-function createProduct(id, name, price) {
-    return (
-        <div key={name} className={style.product}>
-        <Link href={"/products/"+ id}>
-            <a className={style.item}>
-                <Image className={style.image} src={"/images/"+name+".jpg"} alt="image" width="500px" height="500px"/>
-                <div className={style.productText}>
-                    <div className={style.name}>{name}</div>
-                    <div className={style.price}>{price}$</div>
-                </div>
-                <ul className={style.avaible}><li>в наличии</li></ul>
-            </a>
-        </Link>
-        </div>
-    )
-}
-
-function menu() {
-    useEffect(
-        () => {
-            const menu = document.getElementById("menu")
-            const stick = document.getElementById("stick")
-            const observer = new window.IntersectionObserver( 
-                (entries) => {
-                    if (!entries[0].isIntersecting) {
-                        menu.style.transform = 'translateY(0)'
-                    } 
-                    else {
-                        menu.style.transform = 'translateY(-60px)'
-                    }
-                }
-              );
-              
-            observer.observe(stick);
-        }
-    )
-}
-
-
-const index = () => {
-    const {query} =useRouter()
+const index = ({products, maxPage}) => {
+    
+    const {query} = useRouter()
     if (query.page === undefined) {
         query.page = "1"
-    }
+    }    
 
-    const [maxPage, setMaxPage] = useState(null)
-    useEffect(() => {
-        const getData =async () => {
-            axios.post("http://localhost:8000/products/count").then(response => {
-                setMaxPage(Number(response.data) / 5)
-            })
-        }
-        getData()
-    }, [maxPage])
-
-    function createButtons() {
-        if(Number(query.page) >= maxPage) {
-            return (<>
-            <Link href={"/products?page="+(Number(query.page)-1)}><a className={style.button}>назад</a></Link>
-            </>)
-        }
-        else if (Number(query.page) <= 1) {
-            return (<>
-               <Link href={"/products?page="+(Number(query.page)+1)}><a className={style.button}>вперед</a></Link>
-            </>)
-        }
-        else {
-            return (<>
-                <Link href={"/products?page="+(Number(query.page)-1)}><a className={style.button}>назад</a></Link>
-                <Link href={"/products?page="+(Number(query.page)+1)}><a className={style.button}>вперед</a></Link>
-            </>)
-        }
-    }
-
-    const [products, setProducts] = useState(null)
-    
-    useEffect(() => {
-        const getData = async () => {
-            if( query.page ) {
-                axios.get('http://localhost:8000/products', {params: {page: query.page}}).then(response => {
-                setProducts(response.data)
-                })
-            }
-            else {
-                axios.get('http://localhost:8000/products').then(response => {
-                setProducts(response.data)
-                })
-            }
-        }
-        getData()
-    }, [query])
-
-    return menu(), (
+    return menu(), query, (
         
     <>
        <Head>
@@ -122,7 +39,7 @@ const index = () => {
                {products && products.map( (product) =>  createProduct(product.id, product.name, product.price) )}
            </div>
            <div className={style.buttons}>
-               {createButtons()}
+               {createButtons(query.page, maxPage)}
            </div>
        </div>
 
@@ -142,3 +59,15 @@ const index = () => {
 };
 
 export default index;
+
+export const getServerSideProps = async ({query}) => {
+
+    const data = await axios.get('http://localhost:8000/products', {params: {page: query.page}})
+    const products = data.data
+
+    const count = await axios.post('http://localhost:8000/products/count')
+    const maxPage = Number(count.data) / 5
+    
+
+    return {props: {products, maxPage}}
+}
