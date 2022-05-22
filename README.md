@@ -1,9 +1,9 @@
 # About
 GreenMarket is a simple online store, here you can buy various exotic plants ( which are made in blender ) 
 # Backend
-Made in node JS, nest JS framework 
+Nest JS
 # Frontend
-React JS, Next JS framework
+Next JS
 # Functionality ( in progress )
 <ul>
 <li> [ ✓ ] viewing products</li>
