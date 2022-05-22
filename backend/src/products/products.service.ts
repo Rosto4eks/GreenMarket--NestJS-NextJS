@@ -3,7 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { ProductDto } from "src/database/dto/product.dto";
 import { Product } from "src/database/product.entity";
 import { FileService } from "src/file/file.service";
-import { Repository } from "typeorm";
+import { ObjectID, Repository } from "typeorm";
 
 @Injectable()
 export class ProductsService {
@@ -21,8 +21,8 @@ export class ProductsService {
         return this.productsRepository.find({ take: 5, skip: (page-1) * 5});
     }
 
-    public async get(name: string) {
-        return this.productsRepository.findOne({name: name})
+    public async get(id: any) {
+        return this.productsRepository.findOne({id: id})
     }
 
     async create(dto: ProductDto, file: any): Promise<Product> {

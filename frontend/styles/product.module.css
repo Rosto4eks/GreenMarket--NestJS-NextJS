@@ -1,0 +1,130 @@
+.container {
+    border-radius: 15px;
+    background-color: #dfdfdf;
+    box-shadow: 0 0 30px #8d8d8d;
+    max-width: 1000px;
+    font-family: 'Mulish', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px auto;
+}
+.back {
+    width: fit-content;
+    cursor: pointer;
+    color:#6f6f6f;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 10px 10px;
+}
+.main {
+    display: flex;
+    width: 100%;
+}
+.imageBlock {
+    background-color:#dfdfdf;
+    display: flex;
+    width: 40%;
+}
+.image {
+    border-radius: 0 40px 40px 0;
+}
+.nameBlock {
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-color:#dfdfdf;
+}
+.name {
+    display: flex;
+    width: 100%;
+    margin: 40px;
+    font-size: 60px;
+    letter-spacing: 2px;
+    color:#484848;
+}
+.price {
+    margin: auto auto auto 40px;
+    font-size: 30px;
+    letter-spacing: 2px;
+    color:#484848;
+}
+.buy {
+    justify-content: space-between;
+    margin: 40px;
+    display: flex;
+}
+.button {
+    width: 40%;
+    text-decoration: none;
+    background-color: #7ec095;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #ffffff;
+    box-shadow: 0 5px 15px #5e5e5e;
+    transition: 400ms;
+}
+.button:hover {
+    transition: 400ms;
+    box-shadow: 0 10px 15px #5e5e5e;
+}
+.info {
+    display: flex;
+    margin: 50px auto 20px;
+    background-color: #7ec095;
+}
+.infoBlock {
+    width: 30%;
+    font-size: 22px;
+    font-weight: 500;
+    color:#ffffff;
+    margin: auto 20px;
+    padding: 30px 10px;
+}
+
+@media (max-width: 1000px) {
+    .main {
+        flex-direction: column;
+    }
+    .imageBlock {
+        width: 100%;
+    }
+    .image {
+        border-radius: 0 0 40px 40px;
+    }
+    .nameBlock {
+        width: auto;
+        background-color:#dfdfdf;
+    }
+    .name {
+        width: auto;
+        margin: 20px;;
+        font-size: 40px;
+    }
+    .price {
+        margin: 10px auto 10px 20px;
+        margin-top: 20px;
+        font-size: 30px;
+    }
+    .buy {
+        margin: 20px;
+    }
+    .button {
+        margin: 0;
+        font-size: 22px;
+    }
+    .info {
+        flex-direction: column;
+    }
+    .infoBlock {
+        width: auto;
+        border-left: none;
+        border-right: none;
+        border-top: 2px solid #dfdfdf;
+    }
+}

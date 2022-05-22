@@ -1,10 +1,9 @@
 import axios from "axios";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { createButtons } from "../../components/createButtons.module";
 import { createProduct } from "../../components/createProduct.module";
+import { header } from "../../components/header.module";
 import { menu } from "../../components/menu.module";
 import style from "../../styles/products.module.css"
 
@@ -24,16 +23,7 @@ const index = ({products, maxPage}) => {
            <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet"></link>
       </Head>
        <div className={style.container}>
-           <div id="header" className={style.header}>
-               <div className={style.searchBox}><input className={style.search} type="search" placeholder="поиск"></input></div>
-               <Link href="/cart" passHref><a className={style.cart}><Image className={style.cart_image} src="/cart.png"  width="40px" height="40px"></Image></a></Link>
-               <Link href="/account" ><a className={style.account}><Image className={style.account_image} src="/account.png"  width="40px" height="40px"></Image></a></Link>
-           </div>
-           <div id="menu" className={style.menu}>
-               <div className={style.searchBox}><input className={style.menuSearch} type="search" placeholder="поиск"></input></div>
-               <Link href="/cart" passHref><a className={style.cart}><Image className={style.cart_image} src="/cart.png"  width="40px" height="40px"></Image></a></Link>
-               <Link href="/account" ><a className={style.account}><Image className={style.account_image} src="/account.png"  width="40px" height="40px"></Image></a></Link>
-           </div>
+           {header()}
            <div id="stick"></div>
            <div id="products" className={style.products}>
                {products && products.map( (product) =>  createProduct(product.id, product.name, product.price) )}
@@ -45,7 +35,7 @@ const index = ({products, maxPage}) => {
 
        <style jsx global>{
           ` body {
-               background-color: #dfdfdf;
+               background-color: #b5e8c7;
                margin: 0;
            }
            ::-webkit-scrollbar {

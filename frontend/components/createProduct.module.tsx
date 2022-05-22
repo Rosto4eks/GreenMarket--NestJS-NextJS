@@ -10,7 +10,7 @@ export const createProduct = (id: string, name: string, price: string) => {
                 <Image className={style.image} src={"/images/"+name+".jpg"} alt="image" width="500px" height="500px"/>
                 <div className={style.productText}>
                     <div className={style.name}>{name}</div>
-                    <div className={style.price}>{price}$</div>
+                    <div className={style.price}>{price} руб</div>
                 </div>
                 <ul className={style.avaible}><li>в наличии</li></ul>
             </a>

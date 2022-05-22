@@ -1,8 +1,13 @@
 .container {
+    border-radius: 15px;
+    background-color: #dfdfdf;
+    box-shadow: 0 0 30px #8d8d8d;
+    max-width: 1000px;
     font-family: 'Mulish', sans-serif;
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin: 40px auto;
 }
 .header {
     font-size: 18px;
@@ -18,12 +23,13 @@
     width: auto;
 }
 .search {
+    color:#484848;
     font-size: 18px;
     font-weight: 500;
     width: 400px;
     background-color: #dfdfdf;
     font-family: 'Mulish', sans-serif;
-    margin: auto 20px auto 20px;
+    margin: auto 20px auto 14px;
     padding-left: 10px;
     border: 2px solid #dfdfdf;
     height: 50%;
@@ -35,7 +41,7 @@
     outline: none;
 }
 .search::placeholder {
-    color: #3a3a3a;
+    color:#686868;
 }
 .menuSearch {
     font-size: 18px;
@@ -58,8 +64,9 @@
     color: #3a3a3a;
 }
 .menu {
+    max-width: 1000px;
     font-size: 18px;
-    transform: translateY(-60px);
+    transform: translateY(-100px);
     z-index: 1;
     display: flex;
     position: fixed;
@@ -79,8 +86,13 @@
 .cart {
     margin: auto 0 auto auto;
 }
+.balance {
+    font-weight: 300;
+    color:#686868;
+    margin: auto 10px auto 10px;
+}
 .account {
-    margin: auto 20px auto 20px;
+    margin: auto 20px auto 10px;
 }
 .account_image .cart_image {
     width: 100%;
@@ -89,19 +101,20 @@
 .products {
     flex-wrap: wrap;
     display: flex;
+    width: 100%;
     justify-content:space-evenly;
 }
 .product {
     display: flex;
-    width: 50%;
+    width: 35%;
 }
 .item {
     position: relative;
     display: flex;
     flex-direction: column;
     margin: 10px auto 30px auto;
-    height: 600px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
     background-color: #d5d5d5;
     border-radius: 15px;
     box-shadow: 0 10px 20px #c3c3c3;
@@ -126,14 +139,14 @@
 }
 .name {
     width: 100%;
-    color: #404040;
+    color:#484848;
     font-size: 32px;
     font-weight: 300;
 
 }
 .price {
     width: 100%;
-    color: #404040;
+    color:#484848;
     font-size: 22px;
     font-weight: 300;
 }
@@ -159,9 +172,15 @@
     text-decoration: none;
     width: 30%;
     background-color: #7ec095;
+    box-shadow: 0 5px 15px #5e5e5e;
     margin: 10px auto 20px auto;
     color: #dfdfdf;
     border-radius: 10px;
+    transition: 400ms;
+}
+.button:hover {
+    transition: 400ms;
+    box-shadow: 0 10px 15px #5e5e5e; 
 }
 
 @media (max-width: 1000px) {

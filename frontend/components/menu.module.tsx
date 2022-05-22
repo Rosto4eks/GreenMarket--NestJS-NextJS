@@ -8,10 +8,10 @@ export const menu = () => {
             const observer = new window.IntersectionObserver( 
                 (entries) => {
                     if (!entries[0].isIntersecting) {
-                        menu.style.transform = 'translateY(0)'
+                        menu.style.transform = 'translateY(-40px)'
                     } 
                     else {
-                        menu.style.transform = 'translateY(-60px)'
+                        menu.style.transform = 'translateY(-100px)'
                     }
                 }
               );
