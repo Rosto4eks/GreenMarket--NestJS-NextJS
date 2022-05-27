@@ -87,7 +87,7 @@
     margin: auto 0 auto auto;
 }
 .balance {
-    font-weight: 300;
+    font-weight: 400;
     color:#686868;
     margin: auto 10px auto 10px;
 }
@@ -102,6 +102,7 @@
     flex-wrap: wrap;
     display: flex;
     width: 100%;
+    min-height: 400px;
     justify-content:space-evenly;
 }
 .product {

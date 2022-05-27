@@ -58,7 +58,7 @@
 .button {
     width: 40%;
     text-decoration: none;
-    background-color: #7ec095;
+    background-color: #3d8c6f;
     padding: 5px;
     border-radius: 5px;
     text-align: center;
@@ -76,7 +76,7 @@
 .info {
     display: flex;
     margin: 50px auto 20px;
-    background-color: #7ec095;
+    background-color: #3d8c6f;
 }
 .infoBlock {
     width: 30%;

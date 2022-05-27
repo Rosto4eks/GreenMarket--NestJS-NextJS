@@ -13,10 +13,16 @@ export class ProductsController {
         return this.productService.getAll(page)
     }
 
-    @Get(':name')
-    async get(@Param('name') params: string) {
-        return this.productService.get(params)
+    @Get('search')
+    async getByName(@Query('products') name: string) {
+        return this.productService.search(name)
     }
+
+    @Get(':id')
+    async getById(@Param('id') id: string) {
+        return this.productService.getById(id)
+    }
+    
     
     @Post('create')
     @UseInterceptors(FileFieldsInterceptor([{ name: 'image', maxCount: 1 }]))

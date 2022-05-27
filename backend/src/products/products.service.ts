@@ -3,7 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { ProductDto } from "src/database/dto/product.dto";
 import { Product } from "src/database/product.entity";
 import { FileService } from "src/file/file.service";
-import { ObjectID, Repository } from "typeorm";
+import { Like, Repository } from "typeorm";
 
 @Injectable()
 export class ProductsService {
@@ -21,11 +21,15 @@ export class ProductsService {
         return this.productsRepository.find({ take: 5, skip: (page-1) * 5});
     }
 
-    public async get(id: any) {
+    public async getById(id: any) {
         return this.productsRepository.findOne({id: id})
     }
 
-    async create(dto: ProductDto, file: any): Promise<Product> {
+    public async search(name: any) {
+        return this.productsRepository.find({name: Like(`%${name}%`)})
+    } 
+
+    public async create(dto: ProductDto, file: any): Promise<Product> {
 
         const product = new Product();
         product.name = dto.name;
