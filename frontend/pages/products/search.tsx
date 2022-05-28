@@ -50,9 +50,7 @@ const index = ({products}) => {
 export default index;
 
 export const getServerSideProps = async ({query}) => {
-
-    const data = await axios.get('http://localhost:8000/products/search', {params: {products: query.products}})
+    const data = await axios.get('http://localhost:8000/products/search', {params: {product: query.product}})
     const products = data.data 
-
     return {props: {products}}
 }

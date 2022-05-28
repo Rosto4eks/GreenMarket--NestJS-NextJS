@@ -12,10 +12,7 @@ export const header = () => {
         const search = document.getElementsByName("search")
         search.forEach(item => {item.addEventListener("submit", (e)=> {
             e.preventDefault()
-            router.push({
-                pathname:`/products/search`,
-                query: {products: value}
-            })
+            router.push(encodeURI(`/products/search?product=${value}`))
         })})
     })
     return (

@@ -14,8 +14,8 @@ export class ProductsController {
     }
 
     @Get('search')
-    async getByName(@Query('products') name: string) {
-        return this.productService.search(name)
+    async search(@Query('product') name: string) {
+        return this.productService.search(name.toLowerCase())
     }
 
     @Get(':id')
