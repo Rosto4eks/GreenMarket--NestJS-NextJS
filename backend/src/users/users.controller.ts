@@ -9,16 +9,16 @@ export class UsersController {
 
     @Get(':login')
     async get(@Param('login') params: string) {
-       return this.userService.get(params)
+        return this.userService.get(params)
     }
     
     @Post('create')
-    async create(@Body() dto: UserDto) {
-        return this.userService.create(dto)
+    async create(@Body() user: UserDto) {
+        return this.userService.create(user)
     }
 
     @Post('delete:userId')
-    async delete(@Param('userId') params: string) {
+    async delete(@Param('userId') params: any) {
         return this.userService.delete(params)
     }
 }

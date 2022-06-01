@@ -12,12 +12,10 @@ export class ProductsService {
         @InjectRepository(Product)
         private productsRepository: Repository<Product>,
         private fileService: FileService
-      ) {}
+    ) {}
 
     public async getAll(page: number = 1) {
-        if (page < 1) {
-            page = 1
-        }
+        if (page < 1) page = 1
         return this.productsRepository.find({ take: 5, skip: (page-1) * 5});
     }
 
@@ -25,18 +23,18 @@ export class ProductsService {
         return this.productsRepository.findOne({id: id})
     }
 
-    public async search(name: any) {
+    public async search(name: string) {
         return this.productsRepository.find({name: Like(`%${name}%`)})
     } 
 
-    public async create(dto: ProductDto, file: any): Promise<Product> {
+    public async create(product: ProductDto, file: any): Promise<Product> { 
 
-        const product = new Product();
-        product.name = dto.name;
-        product.price = dto.price;
-        this.fileService.createFile(file, dto.name)
+        const newProduct = new Product();
+        newProduct.name = product.name;
+        newProduct.price = product.price;
+        this.fileService.createFile(file, newProduct.name)
 
-        return this.productsRepository.save(product);
+        return this.productsRepository.save(newProduct);
 
     }
 

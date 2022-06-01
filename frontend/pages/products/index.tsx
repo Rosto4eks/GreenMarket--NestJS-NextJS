@@ -51,7 +51,6 @@ const index = ({products, maxPage}) => {
 export default index;
 
 export const getServerSideProps = async ({query}) => {
-
     const data = await axios.get('http://localhost:8000/products', {params: {page: query.page}})
     const products = data.data
 

@@ -1,7 +1,7 @@
 export class ProductDto {
 
-    readonly name;
+    readonly name: string;
 
-    readonly price;
+    readonly price: string;
     
 }

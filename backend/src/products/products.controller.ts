@@ -26,12 +26,12 @@ export class ProductsController {
     
     @Post('create')
     @UseInterceptors(FileFieldsInterceptor([{ name: 'image', maxCount: 1 }]))
-    async create(@Body() dto: ProductDto, @UploadedFiles() file: any) {
-        return this.productService.create(dto, file)
+    async create(@Body() product: ProductDto, @UploadedFiles() file: any) {
+        return this.productService.create(product, file)
     }
 
     @Post('delete/:id')
-    async delete(@Param('id') params: string) {
+    async delete(@Param('id') params: any) {
         return this.productService.delete(params)
     }
 

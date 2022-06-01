@@ -12,22 +12,22 @@ export class UsersService {
         private usersRepository: Repository<User>
       ) {}
 
-    public async get(login) {
+    public async get(login: string) {
         return this.usersRepository.findOne({login: login})
     }
 
-    async create(dto: UserDto): Promise<User> {
+    async create(user: UserDto): Promise<User> {
 
-        const user = new User();
-        user.login = dto.login;
-        user.mail = dto.mail;
-        user.password = dto.login;
+        const newUser = new User();
+        newUser.login = user.login;
+        newUser.mail = user.mail;
+        newUser.password = user.login;
 
-        return this.usersRepository.save(user);
+        return this.usersRepository.save(newUser);
 
     }
 
-    public async delete(id) {
+    public async delete(id: any) {
         return this.usersRepository.delete({id: id})
     }
 

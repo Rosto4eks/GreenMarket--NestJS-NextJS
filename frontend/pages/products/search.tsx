@@ -2,7 +2,6 @@ import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { createProduct } from "../../components/createProduct.module";
 import { header } from "../../components/header.module";
 import { menu } from "../../components/menu.module";

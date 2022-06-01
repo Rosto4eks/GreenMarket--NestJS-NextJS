@@ -1,13 +1,13 @@
 export class CommentDto {
 
-    readonly rating;
+    readonly rating: number;
 
-    readonly product;
+    readonly productId: number;
 
-    readonly user;
+    readonly user: string;
 
-    readonly text;
+    readonly text: string;
 
-    readonly data;
+    readonly data: string;
     
 }

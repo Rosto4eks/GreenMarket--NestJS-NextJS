@@ -1,9 +1,9 @@
 export class UserDto {
 
-    readonly mail;
+    readonly mail: string;
 
-    readonly login;
+    readonly login: string;
 
-    readonly password;
+    readonly password: string;
     
 }
