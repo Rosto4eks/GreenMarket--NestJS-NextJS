@@ -6,7 +6,7 @@ async function server() {
   const app = await NestFactory.create(AppModule);
   app.enableCors()
   await app.listen(PORT);
-  console.log(`\n\u001b[1;35m------------------------------------\n           Server started!\n           PORT: ${PORT}\n------------------------------------\n`)
+  console.log(`\n\u001b[1;35m------------------------------------\n           Server started!\n           PORT: ${PORT}\n------------------------------------\n\u001b[1;37m`)
 }
 
 server();

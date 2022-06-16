@@ -5,3 +5,4 @@ export const DATABASE_NAME = "greenmarket"
 export const DATABASE_PORT = 5432
 export const DATABASE_USER = "postgres"
 export const DATABASE_PASSWORD = "KQ3kefFfa23lFiGG"
+export const JWT_SECRET = "test"
