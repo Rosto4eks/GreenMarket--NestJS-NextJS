@@ -1,5 +1,6 @@
-import { BadRequestException, Body, Controller, Get, Post } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
 import { UserDto } from "src/database/dto/user.dto";
+import { JwtGuard } from "src/guards/jwt.guard";
 import { UsersService } from "./users.service";
 
 @Controller('/users')
@@ -21,8 +22,14 @@ export class UsersController {
 
     @Post('login')
     async login(@Body() {mail, password}: UserDto) {
-        const name = await this.userService.validate(mail, password)
-        return this.userService.login(name)
+        const res = await this.userService.validate(mail, password)
+        return this.userService.login(res)
+    }
+
+    @UseGuards(JwtGuard)
+    @Get('profile')
+    async profile() {
+        return this.userService.profile()
     }
 
     // dev func

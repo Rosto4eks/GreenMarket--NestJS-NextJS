@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@types/passport-jwt": "^3.0.6",
+    "passport-jwt": "^4.0.0"
+  }
+}

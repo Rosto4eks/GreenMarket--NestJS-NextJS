@@ -40,12 +40,16 @@ export class UsersService {
         if (!isCorrect) {
             throw new UnauthorizedException('wrong password')
         }
-        return user.name
+        return mail
     }
 
-    public async login(name: string) {
-        const data = {name}
+    public async login(mail: string) {
+        const data = {mail}
         return { access_token: await this.jwtService.signAsync(data)}
+    }
+
+    public async profile() {
+        return this.usersRepository.findOne({id: 1})
     }
 
     public async getAll() {
