@@ -1,9 +1,10 @@
-import { BadRequestException, Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
-import { UserDto } from "src/database/dto/user.dto";
-import { JwtGuard } from "src/guards/jwt.guard";
+import { BadRequestException, Body, Controller, Get, Post, Res, UseGuards } from "@nestjs/common";
+import { Response } from "express";
+import { UserDto } from "../database/dto/user.dto";
+import { JwtGuard } from "../guards/jwt.guard";
 import { UsersService } from "./users.service";
 
-@Controller('/users')
+@Controller('/profile')
 export class UsersController {
 
     constructor ( private userService: UsersService) {}
@@ -27,14 +28,14 @@ export class UsersController {
     }
 
     @UseGuards(JwtGuard)
-    @Get('profile')
+    @Get()
     async profile() {
         return this.userService.profile()
     }
 
     // dev func
-    @Get()
-    async getAll() {
+    @Get('users')
+    async getAll(@Res() res: Response) {
         return this.userService.getAll()
     }
 }
