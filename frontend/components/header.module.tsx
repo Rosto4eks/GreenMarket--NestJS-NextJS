@@ -28,14 +28,14 @@ export const header = () => {
             </a>
         </Link>
         <div className={style.balance}>1200руб</div>
-        <Link href="/account" ><a className={style.account}><Image className={style.account_image} src="/account.png"  width="40px" height="40px"></Image></a></Link>
+        <Link href="/profile" ><a className={style.account}><Image className={style.account_image} src="/account.png"  width="40px" height="40px"></Image></a></Link>
     </div>
     <div id="menu" className={style.menu}>
         <form name="search" className={style.searchBox}>
             <input className={style.menuSearch} value={value} onChange={(e)=>{setValue(e.currentTarget.value)}} type="search" placeholder="поиск"></input>
         </form>
         <Link href="/cart" passHref><a className={style.cart}><Image className={style.cart_image} src="/cart.png"  width="40px" height="40px"></Image></a></Link>
-        <Link href="/account" ><a className={style.account}><Image className={style.account_image} src="/account.png"  width="40px" height="40px"></Image></a></Link>
+        <Link href="/profile" ><a className={style.account}><Image className={style.account_image} src="/account.png"  width="40px" height="40px"></Image></a></Link>
     </div>
     </>
     )

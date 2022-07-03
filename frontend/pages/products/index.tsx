@@ -35,7 +35,7 @@ const index = ({products, maxPage}) => {
 
        <style jsx global>{
           ` body {
-               background-color: #b5e8c7;
+               background: #fcecd2;
                margin: 0;
            }
            ::-webkit-scrollbar {

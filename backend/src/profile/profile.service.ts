@@ -1,36 +1,37 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
-import { UserDto } from "../database/dto/user.dto"
-import { User } from "../database/user.entity"
+import { UserDto } from "../DTO/user.dto"
+import { User } from "../database/entities/user.entity"
 import { Repository } from "typeorm"
-import {genSalt, hash, compare} from 'bcrypt'
+import { genSalt, hash, compare } from 'bcrypt'
 import { JwtService } from "@nestjs/jwt"
+import jwtDecode from "jwt-decode"
 
 @Injectable()
-export class UsersService {
+export class ProfileService {
 
     constructor(
         @InjectRepository(User)
-        private usersRepository: Repository<User>,
+        private repository: Repository<User>,
         private readonly jwtService: JwtService
       ) {}
 
-    public async create(user: UserDto): Promise<User> {
+    async create(user: UserDto) {
         const salt = await genSalt(10)
         const newUser = new User()
         newUser.name = user.name
         newUser.mail = user.mail
-        console.log(user)
         newUser.password = await hash(user.password, salt)
-
-        return this.usersRepository.save(newUser)
+        this.repository.save(newUser)
+        const data = {mail: user.mail}
+        return { access_token: await this.jwtService.signAsync(data)}
     }
 
-    public async find(mail: string) {
-        return this.usersRepository.findOne({mail: mail})
+    async find(mail: string) {
+        return this.repository.findOne({mail: mail})
     }
 
-    public async validate(mail: string, password: string) {
+    async validate(mail: string, password: string) {
         const user = await this.find(mail)
         if (!user) {
             throw new UnauthorizedException('not found')
@@ -43,17 +44,14 @@ export class UsersService {
         return mail
     }
 
-    public async login(mail: string) {
+    async login(mail: string) {
         const data = {mail}
         return { access_token: await this.jwtService.signAsync(data)}
     }
 
-    public async profile() {
-        return this.usersRepository.findOne({id: 1})
+    async profile(token: string) {
+        const mail = jwtDecode(token)["mail"]
+        const user = await this.repository.findOne({mail: mail})
+        return {mail: user.mail, name: user.name}
     }
-
-    public async getAll() {
-        return this.usersRepository.find()
-    }
-
 }

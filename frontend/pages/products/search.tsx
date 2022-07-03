@@ -33,7 +33,7 @@ const index = ({products}) => {
 
        <style jsx global>{
           ` body {
-               background-color: #b5e8c7;
+               background-color: #fcecd2;
                margin: 0;
            }
            ::-webkit-scrollbar {

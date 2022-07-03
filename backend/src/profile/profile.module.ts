@@ -3,16 +3,16 @@ import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { JWT_SECRET } from "../../env";
-import { User } from "../database/user.entity";
+import { User } from "../database/entities/user.entity";
 import { JwtStrategy } from "../strategies/jwt.strategy";
-import { UsersController } from "./users.controller";
-import { UsersService } from "./users.service";
+import { ProfileController } from "./profile.controller";
+import { ProfileService } from "./profile.service";
 
 @Module( {
     imports: [TypeOrmModule.forFeature([User]), JwtModule.register({secret: JWT_SECRET}), PassportModule],
     exports: [TypeOrmModule],
-    controllers: [UsersController],
-    providers: [UsersService, JwtStrategy]
+    controllers: [ProfileController],
+    providers: [ProfileService, JwtStrategy]
 })
 
-export class UsersModule {}
+export class ProfileModule {}

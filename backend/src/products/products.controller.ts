@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post, Query, UploadedFiles, UseInterceptors } from "@nestjs/common";
 import { FileFieldsInterceptor } from "@nestjs/platform-express";
-import { ProductDto } from "../database/dto/product.dto";
+import { ProductDto } from "../DTO/product.dto";
 import { ProductsService } from "./products.service";
 
 @Controller('products')

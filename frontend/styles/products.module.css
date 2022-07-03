@@ -130,7 +130,7 @@
     bottom: 50px;
     width: 100%;
     position:absolute;  
-    background-color: rgba(95, 210, 130, 0.4);
+    background-color: rgba(252, 236, 210, 0.5);
     backdrop-filter: blur(3px);
     border-radius: 0 0 10px 10px;
 }
@@ -154,7 +154,7 @@
 
 .avaible {
     margin: 0;
-    color: #7ec095;
+    color: #414141;
     font-size: 20px;
     font-weight: 400;
     position: absolute;
@@ -167,13 +167,13 @@
 }
 .button {
     text-align: center;
-    padding: 10px 20px 10px 20px;
+    padding: 5px 20px 5px 20px;
     font-size: 24px;
     font-weight: 600;
     text-decoration: none;
     width: 30%;
-    background-color: #7ec095;
-    box-shadow: 0 5px 15px #5e5e5e;
+    background-color: #3d3d3d;
+    box-shadow: 0 7px 15px rgb(71, 71, 71);
     margin: 10px auto 20px auto;
     color: #dfdfdf;
     border-radius: 10px;
@@ -181,7 +181,7 @@
 }
 .button:hover {
     transition: 400ms;
-    box-shadow: 0 10px 15px #5e5e5e; 
+    box-shadow: 0 10px 15px #424242; 
 }
 
 @media (max-width: 1000px) {

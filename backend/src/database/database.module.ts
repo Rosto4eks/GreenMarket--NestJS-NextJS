@@ -1,8 +1,8 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { DATABASE_HOST, DATABASE_NAME, DATABASE_PASSWORD, DATABASE_PORT, DATABASE_USER } from "../../env";
-import { Product } from "./product.entity";
-import { User } from './user.entity'
+import { Product } from "./entities/product.entity";
+import { User } from './entities/user.entity'
 
 @Module({
     imports: [
