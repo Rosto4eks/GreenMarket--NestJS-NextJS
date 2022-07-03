@@ -8,7 +8,6 @@ Next JS
 <ul>
 <li> [ ✓ ] viewing products</li>
 <li> [ ✓ ] searching for products</li>
-<li> [   ] creating your account</li>
+<li> [ ✓ ] creating your account</li>
 <li> [   ] ordering products</li>
-<li> [   ] viewing orders from the seller panel</li>
 </ul>
